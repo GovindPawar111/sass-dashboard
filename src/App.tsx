@@ -5,10 +5,9 @@ import {
     Navigate,
 } from 'react-router-dom'
 import MainLayout from './Layout/MainLayout'
-import { ECommerce, Projects, Overview } from './page/OtherPage'
+import { Projects, Overview } from './page/OtherPage'
 import ECommercePage from './page/ECommercePage'
 import OrderListPage from './page/OrderListPage'
-
 
 const OnlineCourses = () => (
     <div className="p-6">
@@ -352,7 +351,7 @@ function App() {
                     {/* Dashboard routes */}
                     <Route path="/overview" element={<Overview />} />
                     <Route path="/projects" element={<Projects />} />
-                    <Route path="/ecommerce" element={<ECommerce />} />
+                    <Route path="/ecommerce" element={<ECommercePage />} />
 
                     {/* eCommerce nested routes */}
                     <Route

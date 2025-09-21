@@ -1,37 +1,5 @@
 // src/pages/Dashboard.tsx
-import { House, ShoppingCart, Folder } from 'phosphor-react'
-
-// src/pages/ECommerce.tsx
-export const ECommerce = () => {
-    return (
-        <div className="p-6 space-y-6">
-            <div>
-                <h1 className="text-2xl font-bold text-neutral-900 dark:text-white mb-1">
-                    eCommerce
-                </h1>
-                <p className="text-neutral-600 dark:text-neutral-400">
-                    Manage your online store
-                </p>
-            </div>
-
-            <div className="bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-lg shadow-sm p-8">
-                <div className="text-center">
-                    <ShoppingCart
-                        size={48}
-                        className="mx-auto mb-4 text-neutral-400"
-                    />
-                    <h3 className="text-lg font-medium text-neutral-900 dark:text-white mb-2">
-                        eCommerce Dashboard
-                    </h3>
-                    <p className="text-neutral-600 dark:text-neutral-400">
-                        This will contain your eCommerce analytics and
-                        management tools.
-                    </p>
-                </div>
-            </div>
-        </div>
-    )
-}
+import { House, Folder } from 'phosphor-react'
 
 // src/pages/Projects.tsx
 export const Projects = () => {
