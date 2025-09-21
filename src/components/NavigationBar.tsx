@@ -450,12 +450,12 @@ const NavigationBar = () => {
     }
 
     return (
-        <aside className="w-60 bg-white dark:bg-neutral-800 border-r border-neutral-200 dark:border-neutral-700 flex flex-col h-full">
+        <aside className="w-[212px] bg-white dark:bg-neutral-800 border-r border-neutral-200 dark:border-neutral-700 flex flex-col h-full">
             {/* Logo Section */}
-            <div className="flex items-center gap-2 px-4 py-5 border-b border-neutral-200 dark:border-neutral-700">
+            <div className="flex items-center gap-2 px-4 py-5 border-neutral-200 dark:border-neutral-700">
                 <img
                     src="./images/byewind.png"
-                    alt="user profile" 
+                    alt="user profile"
                     className="w-7 h-7 rounded-md flex items-center justify-center"
                 />
                 <span className="font-semibold text-neutral-900 dark:text-white text-sm">
