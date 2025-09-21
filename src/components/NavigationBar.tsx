@@ -1,16 +1,17 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import {
-    ShoppingCart,
-    Gear,
-    ChartBar,
-    UserCircle,
+    ShoppingBagOpen,
+    Notebook,
+    Folder,
+    IdentificationBadge,
     BookOpen,
-    Article,
-    Users,
+    IdentificationCard,
+    ChatsTeardrop,
     UsersThree,
     CaretRight,
     CaretDown,
+    ChartPieSlice,
 } from 'phosphor-react'
 
 export interface NavigationItem {
@@ -62,14 +63,14 @@ const navigationItems: NavigationItem[] = [
         id: 'default',
         label: 'Default',
         path: '/',
-        icon: <ChartBar size={16} weight="regular" />,
+        icon: <ChartPieSlice size={20} weight="duotone" />,
         category: 'Dashboards',
     },
     {
         id: 'ecommerce',
         label: 'eCommerce',
         path: '/ecommerce',
-        icon: <ShoppingCart size={16} weight="regular" />,
+        icon: <ShoppingBagOpen size={20} weight="duotone" />,
         category: 'Dashboards',
         hasChildren: true,
         children: [
@@ -91,7 +92,7 @@ const navigationItems: NavigationItem[] = [
         id: 'projects-dash',
         label: 'Projects',
         path: '/projects-dashboard',
-        icon: <ChartBar size={16} weight="regular" />,
+        icon: <Folder size={20} weight="duotone" />,
         category: 'Dashboards',
         hasChildren: true,
         children: [
@@ -113,7 +114,7 @@ const navigationItems: NavigationItem[] = [
         id: 'courses',
         label: 'Online Courses',
         path: '/courses',
-        icon: <BookOpen size={16} weight="regular" />,
+        icon: <BookOpen size={20} weight="duotone" />,
         category: 'Dashboards',
         hasChildren: true,
         children: [
@@ -137,7 +138,7 @@ const navigationItems: NavigationItem[] = [
         id: 'user-profile',
         label: 'User Profile',
         path: '/user-profile',
-        icon: <UserCircle size={16} weight="regular" />,
+        icon: <IdentificationBadge size={20} weight="duotone" />,
         category: 'Pages',
         hasChildren: true,
         children: [
@@ -177,7 +178,7 @@ const navigationItems: NavigationItem[] = [
         id: 'account',
         label: 'Account',
         path: '/account',
-        icon: <Gear size={16} weight="regular" />,
+        icon: <IdentificationCard size={20} weight="duotone" />,
         category: 'Pages',
         hasChildren: true,
         children: [
@@ -199,7 +200,7 @@ const navigationItems: NavigationItem[] = [
         id: 'corporate',
         label: 'Corporate',
         path: '/corporate',
-        icon: <UsersThree size={16} weight="regular" />,
+        icon: <UsersThree size={20} weight="duotone" />,
         category: 'Pages',
         hasChildren: true,
         children: [
@@ -221,7 +222,7 @@ const navigationItems: NavigationItem[] = [
         id: 'blog',
         label: 'Blog',
         path: '/blog',
-        icon: <Article size={16} weight="regular" />,
+        icon: <Notebook size={20} weight="duotone" />,
         category: 'Pages',
         hasChildren: true,
         children: [
@@ -243,7 +244,7 @@ const navigationItems: NavigationItem[] = [
         id: 'social',
         label: 'Social',
         path: '/social',
-        icon: <Users size={16} weight="regular" />,
+        icon: <ChatsTeardrop size={20} weight="duotone" />,
         category: 'Pages',
         hasChildren: true,
         children: [
@@ -275,25 +276,25 @@ const NavigationBar = () => {
     useEffect(() => {
         const currentPath = location.pathname
         const newExpanded = new Set<string>()
-        
+
         // Find which parent should be expanded based on current path
-        navigationItems.forEach(item => {
+        navigationItems.forEach((item) => {
             if (item.children) {
-                const hasActiveChild = item.children.some(child => 
-                    child.path === currentPath
+                const hasActiveChild = item.children.some(
+                    (child) => child.path === currentPath
                 )
                 if (hasActiveChild || item.path === currentPath) {
                     newExpanded.add(item.id)
                 }
             }
         })
-        
+
         setExpandedItems(newExpanded)
     }, [location.pathname])
 
     const toggleExpanded = (itemId: string, itemPath: string) => {
         const newExpanded = new Set<string>()
-        
+
         // If the clicked item is already expanded, collapse all
         if (expandedItems.has(itemId)) {
             setExpandedItems(newExpanded)
@@ -301,7 +302,7 @@ const NavigationBar = () => {
             // Close all other dropdowns and open only this one
             newExpanded.add(itemId)
             setExpandedItems(newExpanded)
-            
+
             // Navigate to the parent route when expanding
             navigate(itemPath)
         }

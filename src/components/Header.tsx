@@ -1,12 +1,12 @@
 import { useLocation } from 'react-router-dom'
 import {
     Star,
-    Sun,
-    Moon,
+    SunDim,
+    MoonStars,
     MagnifyingGlass,
     Bell,
-    Gear,
-    List,
+    ClockCounterClockwise,
+    Sidebar,
 } from 'phosphor-react'
 
 interface HeaderProps {
@@ -17,37 +17,115 @@ interface HeaderProps {
 }
 
 // Route mapping for breadcrumb generation
-const routeMap: Record<string, { category: string; section: string; subsection?: string }> = {
+const routeMap: Record<
+    string,
+    { category: string; section: string; subsection?: string }
+> = {
     '/': { category: 'Dashboards', section: 'Default' },
     '/overview': { category: 'Dashboards', section: 'Overview' },
     '/projects': { category: 'Dashboards', section: 'Projects' },
     '/ecommerce': { category: 'Dashboards', section: 'eCommerce' },
-    '/ecommerce/overview': { category: 'Dashboards', section: 'eCommerce', subsection: 'Overview' },
-    '/ecommerce/analytics': { category: 'Dashboards', section: 'eCommerce', subsection: 'Analytics' },
-    '/projects-dashboard': { category: 'Dashboards', section: 'Projects Dashboard' },
-    '/projects-dashboard/overview': { category: 'Dashboards', section: 'Projects Dashboard', subsection: 'Overview' },
-    '/projects-dashboard/tasks': { category: 'Dashboards', section: 'Projects Dashboard', subsection: 'Tasks' },
+    '/ecommerce/overview': {
+        category: 'Dashboards',
+        section: 'eCommerce',
+        subsection: 'Overview',
+    },
+    '/ecommerce/analytics': {
+        category: 'Dashboards',
+        section: 'eCommerce',
+        subsection: 'Analytics',
+    },
+    '/projects-dashboard': {
+        category: 'Dashboards',
+        section: 'Projects Dashboard',
+    },
+    '/projects-dashboard/overview': {
+        category: 'Dashboards',
+        section: 'Projects Dashboard',
+        subsection: 'Overview',
+    },
+    '/projects-dashboard/tasks': {
+        category: 'Dashboards',
+        section: 'Projects Dashboard',
+        subsection: 'Tasks',
+    },
     '/courses': { category: 'Dashboards', section: 'Online Courses' },
-    '/courses/overview': { category: 'Dashboards', section: 'Online Courses', subsection: 'Overview' },
-    '/courses/catalog': { category: 'Dashboards', section: 'Online Courses', subsection: 'Catalog' },
+    '/courses/overview': {
+        category: 'Dashboards',
+        section: 'Online Courses',
+        subsection: 'Overview',
+    },
+    '/courses/catalog': {
+        category: 'Dashboards',
+        section: 'Online Courses',
+        subsection: 'Catalog',
+    },
     '/user-profile': { category: 'Pages', section: 'User Profile' },
-    '/user-profile/overview': { category: 'Pages', section: 'User Profile', subsection: 'Overview' },
-    '/user-profile/projects': { category: 'Pages', section: 'User Profile', subsection: 'Projects' },
-    '/user-profile/campaigns': { category: 'Pages', section: 'User Profile', subsection: 'Campaigns' },
-    '/user-profile/documents': { category: 'Pages', section: 'User Profile', subsection: 'Documents' },
-    '/user-profile/followers': { category: 'Pages', section: 'User Profile', subsection: 'Followers' },
+    '/user-profile/overview': {
+        category: 'Pages',
+        section: 'User Profile',
+        subsection: 'Overview',
+    },
+    '/user-profile/projects': {
+        category: 'Pages',
+        section: 'User Profile',
+        subsection: 'Projects',
+    },
+    '/user-profile/campaigns': {
+        category: 'Pages',
+        section: 'User Profile',
+        subsection: 'Campaigns',
+    },
+    '/user-profile/documents': {
+        category: 'Pages',
+        section: 'User Profile',
+        subsection: 'Documents',
+    },
+    '/user-profile/followers': {
+        category: 'Pages',
+        section: 'User Profile',
+        subsection: 'Followers',
+    },
     '/account': { category: 'Pages', section: 'Account' },
-    '/account/settings': { category: 'Pages', section: 'Account', subsection: 'Settings' },
-    '/account/preferences': { category: 'Pages', section: 'Account', subsection: 'Preferences' },
+    '/account/settings': {
+        category: 'Pages',
+        section: 'Account',
+        subsection: 'Settings',
+    },
+    '/account/preferences': {
+        category: 'Pages',
+        section: 'Account',
+        subsection: 'Preferences',
+    },
     '/corporate': { category: 'Pages', section: 'Corporate' },
-    '/corporate/overview': { category: 'Pages', section: 'Corporate', subsection: 'Overview' },
-    '/corporate/team': { category: 'Pages', section: 'Corporate', subsection: 'Team' },
+    '/corporate/overview': {
+        category: 'Pages',
+        section: 'Corporate',
+        subsection: 'Overview',
+    },
+    '/corporate/team': {
+        category: 'Pages',
+        section: 'Corporate',
+        subsection: 'Team',
+    },
     '/blog': { category: 'Pages', section: 'Blog' },
     '/blog/posts': { category: 'Pages', section: 'Blog', subsection: 'Posts' },
-    '/blog/drafts': { category: 'Pages', section: 'Blog', subsection: 'Drafts' },
+    '/blog/drafts': {
+        category: 'Pages',
+        section: 'Blog',
+        subsection: 'Drafts',
+    },
     '/social': { category: 'Pages', section: 'Social' },
-    '/social/feed': { category: 'Pages', section: 'Social', subsection: 'Feed' },
-    '/social/connections': { category: 'Pages', section: 'Social', subsection: 'Connections' },
+    '/social/feed': {
+        category: 'Pages',
+        section: 'Social',
+        subsection: 'Feed',
+    },
+    '/social/connections': {
+        category: 'Pages',
+        section: 'Social',
+        subsection: 'Connections',
+    },
 }
 
 const Header = ({
@@ -57,12 +135,16 @@ const Header = ({
     toggleDarkMode,
 }: HeaderProps) => {
     const location = useLocation()
-    
+
     // Get breadcrumb info based on current route
     const getBreadcrumbInfo = () => {
         const routeInfo = routeMap[location.pathname]
         if (!routeInfo) {
-            return { category: 'Dashboards', section: 'Default', subsection: undefined }
+            return {
+                category: 'Dashboards',
+                section: 'Default',
+                subsection: undefined,
+            }
         }
         return routeInfo
     }
@@ -80,8 +162,10 @@ const Header = ({
                 <div className="flex items-center gap-4">
                     {/* Sidebar Toggle Button - No functionality */}
                     <button className="p-2 hover:bg-neutral-100 dark:hover:bg-neutral-700 rounded-lg transition-colors">
-                        <List
+                        {/* <List size={20} /> */}
+                        <Sidebar
                             size={20}
+                            weight="duotone"
                             className="text-neutral-600 dark:text-neutral-400"
                         />
                     </button>
@@ -139,16 +223,30 @@ const Header = ({
                         className="p-2 hover:bg-neutral-100 dark:hover:bg-neutral-700 rounded-lg transition-colors"
                     >
                         {darkMode ? (
-                            <Sun
+                            <SunDim
                                 size={20}
+                                weight="duotone"
                                 className="text-neutral-600 dark:text-neutral-400"
                             />
                         ) : (
-                            <Moon
+                            <MoonStars
                                 size={20}
+                                weight="duotone"
                                 className="text-neutral-600 dark:text-neutral-400"
                             />
                         )}
+                    </button>
+
+                    {/* activities - Toggles Notification Bar */}
+                    <button
+                        onClick={handleToggleNotifications}
+                        className="p-2 hover:bg-neutral-100 dark:hover:bg-neutral-700 rounded-lg transition-colors"
+                    >
+                        <ClockCounterClockwise
+                            size={20}
+                            weight="duotone"
+                            className="text-neutral-600 dark:text-neutral-400"
+                        />
                     </button>
 
                     {/* Notifications Bell - Toggles Notification Bar */}
@@ -159,30 +257,20 @@ const Header = ({
                         >
                             <Bell
                                 size={20}
+                                weight="duotone"
                                 className="text-neutral-600 dark:text-neutral-400"
                             />
-                            <span className="absolute -top-1 -right-1 w-3 h-3 bg-error-500 rounded-full text-xs"></span>
                         </button>
                     </div>
 
-                    {/* Settings - Toggles Notification Bar */}
-                    <button 
-                        onClick={handleToggleNotifications}
-                        className="p-2 hover:bg-neutral-100 dark:hover:bg-neutral-700 rounded-lg transition-colors"
-                    >
-                        <Gear
-                            size={20}
-                            className="text-neutral-600 dark:text-neutral-400"
-                        />
-                    </button>
-
                     {/* Menu/More Options - Toggles Notification Bar */}
-                    <button 
+                    <button
                         onClick={handleToggleNotifications}
                         className="p-2 hover:bg-neutral-100 dark:hover:bg-neutral-700 rounded-lg transition-colors"
                     >
-                        <List
+                        <Sidebar
                             size={20}
+                            weight="duotone"
                             className="text-neutral-600 dark:text-neutral-400"
                         />
                     </button>

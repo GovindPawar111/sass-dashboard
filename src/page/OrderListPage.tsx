@@ -6,7 +6,6 @@ import {
     MagnifyingGlass,
     DotsThree,
     CalendarBlank,
-    Copy,
     CaretLeft,
     CaretRight,
 } from 'phosphor-react'
@@ -16,15 +15,12 @@ interface OrderItem {
     id: string
     user: {
         name: string
-        avatar: string
-        avatarColor: string
+        imgSrc: string
+        imgAlt: string
     }
     project: string
     address: string
-    date: {
-        text: string
-        icon: React.ReactNode
-    }
+    date: string
     status: {
         text: string
         color: string
@@ -40,16 +36,12 @@ const orderData: OrderItem[] = [
         id: '#CM9801',
         user: {
             name: 'Natali Craig',
-            avatar: 'NC',
-            avatarColor:
-                'bg-pink-100 text-pink-700 dark:bg-pink-900/20 dark:text-pink-300',
+            imgSrc: './images/1.png',
+            imgAlt: 'person1',
         },
         project: 'Landing Page',
         address: 'Meadow Lane Oakland',
-        date: {
-            text: 'Just now',
-            icon: <CalendarBlank size={14} className="text-neutral-500" />,
-        },
+        date: 'Just now',
         status: {
             text: 'In Progress',
             color: 'text-blue-600 dark:text-blue-400',
@@ -61,16 +53,12 @@ const orderData: OrderItem[] = [
         id: '#CM9802',
         user: {
             name: 'Kate Morrison',
-            avatar: 'KM',
-            avatarColor:
-                'bg-purple-100 text-purple-700 dark:bg-purple-900/20 dark:text-purple-300',
+            imgSrc: './images/2.png',
+            imgAlt: 'person2',
         },
         project: 'CRM Admin pages',
         address: 'Larry San Francisco',
-        date: {
-            text: 'A minute ago',
-            icon: <CalendarBlank size={14} className="text-neutral-500" />,
-        },
+        date: 'A minute ago',
         status: {
             text: 'Complete',
             color: 'text-green-600 dark:text-green-400',
@@ -82,16 +70,12 @@ const orderData: OrderItem[] = [
         id: '#CM9803',
         user: {
             name: 'Drew Cano',
-            avatar: 'DC',
-            avatarColor:
-                'bg-red-100 text-red-700 dark:bg-red-900/20 dark:text-red-300',
+            imgSrc: './images/3.png',
+            imgAlt: 'person3',
         },
         project: 'Client Project',
         address: 'Bagwell Avenue Ocala',
-        date: {
-            text: '1 hour ago',
-            icon: <CalendarBlank size={14} className="text-neutral-500" />,
-        },
+        date: '1 hour ago',
         status: {
             text: 'Pending',
             color: 'text-blue-400 dark:text-blue-300',
@@ -103,16 +87,12 @@ const orderData: OrderItem[] = [
         id: '#CM9804',
         user: {
             name: 'Orlando Diggs',
-            avatar: 'OD',
-            avatarColor:
-                'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/20 dark:text-yellow-300',
+            imgSrc: './images/4.png',
+            imgAlt: 'person4',
         },
         project: 'Admin Dashboard',
         address: 'Washburn Baton Rouge',
-        date: {
-            text: 'Yesterday',
-            icon: <CalendarBlank size={14} className="text-neutral-500" />,
-        },
+        date: 'Yesterday',
         status: {
             text: 'Approved',
             color: 'text-yellow-600 dark:text-yellow-400',
@@ -125,16 +105,12 @@ const orderData: OrderItem[] = [
         id: '#CM9805',
         user: {
             name: 'Andi Lane',
-            avatar: 'AL',
-            avatarColor:
-                'bg-blue-100 text-blue-700 dark:bg-blue-900/20 dark:text-blue-300',
+            imgSrc: './images/5.png',
+            imgAlt: 'person5',
         },
         project: 'App Landing Page',
         address: 'Nest Lane Olivette',
-        date: {
-            text: 'Feb 2, 2023',
-            icon: <Copy size={14} className="text-neutral-500" />,
-        },
+        date: 'Feb 2, 2023',
         status: {
             text: 'Rejected',
             color: 'text-neutral-500 dark:text-neutral-400',
@@ -147,16 +123,12 @@ const orderData: OrderItem[] = [
         id: '#CM9801',
         user: {
             name: 'Natali Craig',
-            avatar: 'NC',
-            avatarColor:
-                'bg-pink-100 text-pink-700 dark:bg-pink-900/20 dark:text-pink-300',
+            imgSrc: './images/6.png',
+            imgAlt: 'person6',
         },
         project: 'Landing Page',
         address: 'Meadow Lane Oakland',
-        date: {
-            text: 'Just now',
-            icon: <CalendarBlank size={14} className="text-neutral-500" />,
-        },
+        date: 'Just now',
         status: {
             text: 'In Progress',
             color: 'text-blue-600 dark:text-blue-400',
@@ -168,16 +140,12 @@ const orderData: OrderItem[] = [
         id: '#CM9802',
         user: {
             name: 'Kate Morrison',
-            avatar: 'KM',
-            avatarColor:
-                'bg-purple-100 text-purple-700 dark:bg-purple-900/20 dark:text-purple-300',
+            imgSrc: './images/7.png',
+            imgAlt: 'person7',
         },
         project: 'CRM Admin pages',
         address: 'Larry San Francisco',
-        date: {
-            text: 'A minute ago',
-            icon: <CalendarBlank size={14} className="text-neutral-500" />,
-        },
+        date: 'A minute ago',
         status: {
             text: 'Complete',
             color: 'text-green-600 dark:text-green-400',
@@ -189,16 +157,12 @@ const orderData: OrderItem[] = [
         id: '#CM9803',
         user: {
             name: 'Drew Cano',
-            avatar: 'DC',
-            avatarColor:
-                'bg-red-100 text-red-700 dark:bg-red-900/20 dark:text-red-300',
+            imgSrc: './images/8.png',
+            imgAlt: 'person8',
         },
         project: 'Client Project',
         address: 'Bagwell Avenue Ocala',
-        date: {
-            text: '1 hour ago',
-            icon: <CalendarBlank size={14} className="text-neutral-500" />,
-        },
+        date: '1 hour ago',
         status: {
             text: 'Pending',
             color: 'text-blue-400 dark:text-blue-300',
@@ -210,16 +174,12 @@ const orderData: OrderItem[] = [
         id: '#CM9804',
         user: {
             name: 'Orlando Diggs',
-            avatar: 'OD',
-            avatarColor:
-                'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/20 dark:text-yellow-300',
+            imgSrc: './images/9.png',
+            imgAlt: 'person9',
         },
         project: 'Admin Dashboard',
         address: 'Washburn Baton Rouge',
-        date: {
-            text: 'Yesterday',
-            icon: <CalendarBlank size={14} className="text-neutral-500" />,
-        },
+        date: 'Yesterday',
         status: {
             text: 'Approved',
             color: 'text-yellow-600 dark:text-yellow-400',
@@ -231,16 +191,12 @@ const orderData: OrderItem[] = [
         id: '#CM9805',
         user: {
             name: 'Andi Lane',
-            avatar: 'AL',
-            avatarColor:
-                'bg-blue-100 text-blue-700 dark:bg-blue-900/20 dark:text-blue-300',
+            imgSrc: './images/10.png',
+            imgAlt: 'person10',
         },
         project: 'App Landing Page',
         address: 'Nest Lane Olivette',
-        date: {
-            text: 'Feb 2, 2023',
-            icon: <Copy size={14} className="text-neutral-500" />,
-        },
+        date: 'Feb 2, 2023',
         status: {
             text: 'Rejected',
             color: 'text-neutral-500 dark:text-neutral-400',
@@ -386,11 +342,13 @@ const OrderListPage: React.FC = () => {
                                     <td className="px-4 py-4">
                                         <div className="flex items-center gap-3">
                                             <div
-                                                className={`w-8 h-8 ${order.user.avatarColor} rounded-full flex items-center justify-center flex-shrink-0`}
+                                                className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0`}
                                             >
-                                                <span className="text-xs font-bold">
-                                                    {order.user.avatar}
-                                                </span>
+                                                <img
+                                                    src={order.user.imgSrc}
+                                                    alt={order.user.imgAlt}
+                                                    className=" rounded-full "
+                                                />
                                             </div>
                                             <span className="text-sm font-medium text-neutral-900 dark:text-white">
                                                 {order.user.name}
@@ -409,9 +367,9 @@ const OrderListPage: React.FC = () => {
                                     </td>
                                     <td className="px-4 py-4">
                                         <div className="flex items-center gap-2">
-                                            {order.date.icon}
+                                            <CalendarBlank size={16} />
                                             <span className="text-sm text-neutral-700 dark:text-neutral-300">
-                                                {order.date.text}
+                                                {order.date}
                                             </span>
                                         </div>
                                     </td>
